@@ -1,0 +1,6 @@
+error_on_line_overflow = true
+error_on_unformatted = true
+empty_item_single_line = false
+version = "Two"
+edition = "2018"
+tab_spaces = 2

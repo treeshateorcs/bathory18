@@ -1,0 +1,3 @@
+okay, so this is another rss reader from me. it works the same as lidya (and lydia), same config file, same code, except that it does not have a ui. all it does it display incoming articles through `notify-send`
+
+one thing to note is that if you want to "read" all articles at once (without the bother of clicking through tons of notifications), run it with the `-a` flag

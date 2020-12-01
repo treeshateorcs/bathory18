@@ -1,0 +1,21 @@
+[package]
+name = "bathory18"
+version = "0.1.0"
+authors = ["tho <tho@b0x.me>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+feed-rs = "0.4.0"
+reqwest = { version = "0.10.6", features = ["blocking", "rustls-tls"] }
+chrono = "0.4.11"
+unicode-width = "0.1.7"
+notify-rust = "4.0.0"
+csv = "1.1.3"
+serde = "1.0.111"
+xdg = "2.2.0"
+single-instance = "0.1.2"
+
+[profile.dev.package."*"]
+opt-level = "z"
