@@ -12,8 +12,7 @@ the bother of clicking through tons of notifications), run it with the `-a` flag
 
 # ~/.config/bathory18/urls sample
 ```
-https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ,Jon
-Gjengset,mpv
+https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ,Jon Gjengset,mpv
 https://github.com/qutebrowser/qutebrowser/releases.atom,qb releases
 #https://www.techrepublic.com/rssfeeds/articles/
 ```
