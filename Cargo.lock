@@ -75,6 +75,7 @@ dependencies = [
  "csv",
  "dirs 3.0.1",
  "feed-rs",
+ "log",
  "notify-rust",
  "reqwest",
  "serde",

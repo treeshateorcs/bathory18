@@ -2,8 +2,6 @@ use std::io::BufRead;
 use std::io::Read;
 use std::io::Write;
 
-const TIMEOUT: u64 = 60;
-
 #[derive(PartialEq)]
 struct Item {
   read: i8,
@@ -21,6 +19,11 @@ struct ReadItem {
 }
 
 fn main() {
+  let timeout = std::env::var("BATHORY18_TIMEOUT")
+    .unwrap_or(String::from("60"))
+    .parse::<u64>()
+    .unwrap_or(60);
+  println!("timeout set to {}", timeout);
   let config_dir = dirs::config_dir().unwrap();
   let mut lock = config_dir.clone();
   lock.push("bathory18/lock");
@@ -63,7 +66,7 @@ fn main() {
     remove_read_items(&mut feeds);
     feeds.sort_unstable_by(|a, b| {
       if b.timestamp != a.timestamp {
-        a.timestamp.partial_cmp(&b.timestamp).unwrap()
+        b.timestamp.partial_cmp(&a.timestamp).unwrap()
       } else if b.article_title != a.article_title {
         b.article_title.partial_cmp(&a.article_title).unwrap()
       } else {
@@ -79,7 +82,7 @@ fn main() {
       notify(&article);
       mark_as_read(article);
     }
-    std::thread::sleep(std::time::Duration::from_secs(TIMEOUT));
+    std::thread::sleep(std::time::Duration::from_secs(timeout));
   }
 }
 
@@ -185,7 +188,7 @@ fn parse_feeds(lines: &Vec<String>) -> Vec<std::thread::JoinHandle<Vec<Item>>> {
             Some(t) => t.timestamp(),
             None => match entry.updated {
               Some(t) => t.timestamp(),
-              None => 1,
+              None => 0,
             },
           },
           link: entry.links[0].href.clone(),
