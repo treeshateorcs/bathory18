@@ -73,6 +73,7 @@ fn main() {
     if first_time && args.len() > 1 && args[1].eq("-a") {
       mark_all_as_read(&mut feeds);
       first_time = false;
+      continue;
     }
     for article in feeds.iter().rev() {
       notify(&article);
