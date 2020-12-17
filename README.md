@@ -1,4 +1,4 @@
-![Screenshot](https://git.sr.ht/~tho/bathory18/blob/main/screenshot.png)
+![Screenshot](https://codeberg.org/treeshateorcs/bathory18/raw/branch/main/screenshot.png)
 
 # bathory18
 
