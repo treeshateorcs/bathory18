@@ -78,9 +78,12 @@ fn main() {
       first_time = false;
       continue;
     }
+    let len = feeds.len();
+    let mut index = 1;
     for article in feeds.iter().rev() {
-      notify(&article);
+      notify(&article, &index, &len);
       mark_as_read(article);
+      index += 1;
     }
     std::thread::sleep(std::time::Duration::from_secs(timeout));
   }
@@ -98,10 +101,10 @@ fn notify(article: &Item) {
 }
 
 #[cfg(not(target_os = "windows"))]
-fn notify(article: &Item) {
+fn notify(article: &Item, index: &i32, len: &usize) {
   let args = vec![&article.link];
   notify_rust::Notification::new()
-    .summary(article.feed_title.as_str())
+    .summary(format!("{}\t{}/{}", article.feed_title, index, len).as_str())
     .body(&article.article_title)
     .timeout(notify_rust::Timeout::Never)
     .action("default", "default")
