@@ -104,7 +104,7 @@ fn notify(article: &Item) {
 fn notify(article: &Item, index: &i32, len: &usize) {
   let args = vec![&article.link];
   notify_rust::Notification::new()
-    .summary(format!("{}\t{}/{}", article.feed_title, index, len).as_str())
+    .summary(format!("({}/{}) {}", index, len, article.feed_title).as_str())
     .body(&article.article_title)
     .timeout(notify_rust::Timeout::Never)
     .action("default", "default")
