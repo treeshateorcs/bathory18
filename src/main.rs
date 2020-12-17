@@ -103,8 +103,13 @@ fn notify(article: &Item) {
 #[cfg(not(target_os = "windows"))]
 fn notify(article: &Item, index: &i32, len: &usize) {
   let args = vec![&article.link];
+  let title = if *len == 1 {
+    format!("{}", article.feed_title)
+  } else {
+    format!("({}/{}) {}", index, len, article.feed_title)
+  };
   notify_rust::Notification::new()
-    .summary(format!("({}/{}) {}", index, len, article.feed_title).as_str())
+    .summary(title.as_str())
     .body(&article.article_title)
     .timeout(notify_rust::Timeout::Never)
     .action("default", "default")
