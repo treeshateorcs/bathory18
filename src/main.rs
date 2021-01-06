@@ -64,7 +64,7 @@ fn main() {
       }
     }
     remove_read_items(&mut feeds);
-    feeds.sort_unstable_by(|a, b| {
+    feeds.sort_unstable_by(|b, a| {
       if b.timestamp != a.timestamp {
         b.timestamp.partial_cmp(&a.timestamp).unwrap()
       } else if b.article_title != a.article_title {
