@@ -23,3 +23,6 @@ https://github.com/qutebrowser/qutebrowser/releases.atom,qb releases
 bathory18 will automatically prevent running two instances
 left click to open in browser (by default) or another program (as configured)
 right click to dismiss
+
+
+there's environment variable BATHORY18_TIMEOUT which controls the interval to check the news with (in seconds)
